@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import { CreateInsuranceApplicationDto } from './dto/create-insurance-application.dto';
-import { UpdateInsuranceApplicationDto } from './dto/update-insurance-application.dto';
+import {Injectable} from '@nestjs/common';
+import {CreateInsuranceApplicationDto} from './dto/create-insurance-application.dto';
+import {UpdateInsuranceApplicationDto} from './dto/update-insurance-application.dto';
 
 @Injectable()
 export class InsuranceApplicationService {
@@ -16,7 +16,10 @@ export class InsuranceApplicationService {
     return `This action returns a #${id} insuranceApplication`;
   }
 
-  update(id: number, updateInsuranceApplicationDto: UpdateInsuranceApplicationDto) {
+  update(
+    id: number,
+    updateInsuranceApplicationDto: UpdateInsuranceApplicationDto
+  ) {
     return `This action updates a #${id} insuranceApplication`;
   }
 

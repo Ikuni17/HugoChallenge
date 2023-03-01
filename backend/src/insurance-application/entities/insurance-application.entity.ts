@@ -1,14 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity()
 export class InsuranceApplication {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 50 })
+  @Column({length: 50})
   firstName: string;
 
-  @Column({ length: 50 })
+  @Column({length: 50})
   lastName: string;
 
   @Column('datetime')
