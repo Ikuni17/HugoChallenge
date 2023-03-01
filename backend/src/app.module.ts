@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ApplicationModule } from './application/application.module';
+import { InsuranceApplicationModule } from './insurance-application/insurance-application.module';
 
 @Module({
   imports: [
@@ -12,7 +12,7 @@ import { ApplicationModule } from './application/application.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    ApplicationModule,
+    InsuranceApplicationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
