@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import { CreateApplicationDto } from './dto/create-application.dto';
-import { UpdateApplicationDto } from './dto/update-application.dto';
+import {Injectable} from '@nestjs/common';
+import {CreateApplicationDto} from './dto/create-application.dto';
+import {UpdateApplicationDto} from './dto/update-application.dto';
 
 @Injectable()
 export class ApplicationService {
@@ -22,5 +22,9 @@ export class ApplicationService {
 
   remove(id: number) {
     return `This action removes a #${id} application`;
+  }
+
+  validate(id: number, updateApplicationDto: UpdateApplicationDto) {
+    return `This action validates ${id}`;
   }
 }
