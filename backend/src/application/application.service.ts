@@ -1,30 +1,39 @@
 import {Injectable} from '@nestjs/common';
 import {CreateApplicationDto} from './dto/create-application.dto';
 import {UpdateApplicationDto} from './dto/update-application.dto';
+import {Application} from './application.entity';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
 
 @Injectable()
 export class ApplicationService {
-  create(createApplicationDto: CreateApplicationDto) {
-    return 'This action adds a new application';
+  constructor(
+    @InjectRepository(Application)
+    private applicationRepo: Repository<Application>
+  ) {}
+
+  async create(application: CreateApplicationDto) {
+    return await this.applicationRepo.create(application);
   }
 
-  findAll() {
-    return `This action returns all application`;
+  async findAll() {
+    return await this.applicationRepo.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} application`;
+  async findOne(id: number) {
+    return await this.applicationRepo.findOneBy({id});
   }
 
-  update(id: number, updateApplicationDto: UpdateApplicationDto) {
-    return `This action updates a #${id} application`;
+  async update(id: number, application: UpdateApplicationDto) {
+    return await this.applicationRepo.update(id, application);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} application`;
+  async remove(id: number) {
+    return await this.applicationRepo.delete(id);
   }
 
-  validate(id: number, updateApplicationDto: UpdateApplicationDto) {
-    return `This action validates ${id}`;
+  async validate(id: number, application: UpdateApplicationDto) {
+    // TODO
+    return await `This action validates ${id}`;
   }
 }

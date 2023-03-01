@@ -1,6 +1,9 @@
 import {Module} from '@nestjs/common';
 import {TypeOrmModule} from '@nestjs/typeorm';
+import {AddressModule} from './address/address.module';
 import {ApplicationModule} from './application/application.module';
+import {PersonModule} from './person/person.module';
+import {VehicleModule} from './vehicle/vehicle.module';
 
 @Module({
   imports: [
@@ -8,9 +11,13 @@ import {ApplicationModule} from './application/application.module';
       type: 'sqlite',
       database: 'hugoDB.sqlite3',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true
+      synchronize: false,
+      autoLoadEntities: true
     }),
-    ApplicationModule
+    ApplicationModule,
+    AddressModule,
+    PersonModule,
+    VehicleModule
   ],
   controllers: [],
   providers: []
