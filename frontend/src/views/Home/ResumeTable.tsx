@@ -22,6 +22,7 @@ export const ResumeTable: React.FC = () => {
     });
   }, [applications]);
 
+  // TODO: Fetching twice
   useEffect(() => {
     fetch('http://localhost:8000/api/application', {
       mode: 'cors'
@@ -37,23 +38,21 @@ export const ResumeTable: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <HugoTitle order={3} mb="md" align="center">
+    <HugoStack pt="xl">
+      <HugoTitle order={3} align="center">
         {'Resume Application'}
       </HugoTitle>
-      <HugoStack>
-        <HugoTable>
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Date of Birth</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{rows ?? []}</tbody>
-        </HugoTable>
-      </HugoStack>
-    </>
+      <HugoTable>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>{rows ?? []}</tbody>
+      </HugoTable>
+    </HugoStack>
   );
 };

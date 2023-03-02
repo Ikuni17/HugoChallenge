@@ -46,8 +46,8 @@ export const ThirdPartyForm: React.FC = () => {
   } = useController({name: 'dateOfBirth', control});
 
   return (
-    <>
-      <HugoTitle order={3} mb="md" align="center">
+    <HugoStack pb="xl">
+      <HugoTitle order={3} align="center">
         {'Start New Application'}
       </HugoTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -74,11 +74,11 @@ export const ThirdPartyForm: React.FC = () => {
               label: 'Date of Birth'
             }}
           />
-          <HugoButton type="submit" disabled={!formState.isDirty}>
+          <HugoButton type="submit" fullWidth disabled={!formState.isDirty}>
             {'Submit'}
           </HugoButton>
         </HugoStack>
       </form>
-    </>
+    </HugoStack>
   );
 };
