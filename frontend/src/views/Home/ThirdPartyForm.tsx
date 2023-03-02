@@ -3,6 +3,7 @@ import {SubmitHandler, useForm, useController} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {
   HugoButton,
+  HugoCalendar,
   HugoStack,
   HugoTextInput,
   HugoTitle
@@ -20,7 +21,7 @@ export const ThirdPartyForm: React.FC = () => {
     defaultValues: {
       firstName: '',
       lastName: '',
-      dateOfBirth: ''
+      dateOfBirth: undefined
     }
   });
 
@@ -63,11 +64,12 @@ export const ThirdPartyForm: React.FC = () => {
             withAsterisk
             label={'Last Name'}
           />
-          <HugoTextInput
-            {...dateOfBirthField}
-            error={dateOfBirthError?.message}
-            withAsterisk
-            label={'Date of Birth'}
+          <HugoCalendar
+            value={dateOfBirthField.value}
+            onChange={dateOfBirthField.onChange}
+            // error={dateOfBirthError?.message}
+            // withAsterisk
+            // label={'Date of Birth'}
           />
           <HugoButton type="submit" disabled={!formState.isDirty}>
             {'Submit'}

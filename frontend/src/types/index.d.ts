@@ -9,7 +9,7 @@ interface Person {
   id: number;
   firstName: string;
   lastName: string;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   address?: Address;
   vehicles?: Vehicle[];
 }
