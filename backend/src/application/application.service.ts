@@ -10,6 +10,7 @@ const relations: FindOptionsRelations<Application> = {
   person: {address: true, vehicles: true}
 };
 
+// TODO proper HTTP status codes/error handling
 @Injectable()
 export class ApplicationService {
   constructor(
