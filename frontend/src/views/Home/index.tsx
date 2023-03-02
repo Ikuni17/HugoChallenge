@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  HugoButton,
-  HugoContainer,
-  HugoLogo,
-  HugoTextInput
-} from '../../components';
+import {HugoContainer} from '../../components';
+import {ThirdPartyForm} from './ThirdPartyForm';
 
 export const Home: React.FC = () => {
   return (
     <HugoContainer>
-      <HugoLogo />
-      <HugoButton>Hello</HugoButton>
-      <HugoTextInput label="World" />
+      <ThirdPartyForm />
     </HugoContainer>
   );
 };
