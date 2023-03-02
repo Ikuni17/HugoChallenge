@@ -7,16 +7,13 @@ export class Vehicle {
   id: number;
 
   @Column()
-  street: string;
+  make: string;
 
   @Column()
-  city: string;
+  model: string;
 
   @Column()
-  state: string;
-
-  @Column()
-  zipcode: number;
+  year: number;
 
   @ManyToOne(() => Person, person => person.vehicles)
   person: Person;
