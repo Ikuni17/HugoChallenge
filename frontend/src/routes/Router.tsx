@@ -1,8 +1,9 @@
 import React from 'react';
-import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
+import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import {Routes} from './routes';
 import {Home} from '../views/Home';
 import {Application} from '../views/Application';
+import {NotFound} from '../views/NotFound';
 
 export const Router: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ export const Router: React.FC = () => {
           path={Routes.ApplicationWithParams}
           component={Application}
         />
-        <Redirect to={Routes.Home} />
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
