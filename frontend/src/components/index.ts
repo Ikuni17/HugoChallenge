@@ -4,5 +4,6 @@ export * from './HugoCalendar';
 export * from './HugoContainer';
 export * from './HugoLogo';
 export * from './HugoStack';
+export * from './HugoTable';
 export * from './HugoTextInput';
 export * from './HugoTitle';
