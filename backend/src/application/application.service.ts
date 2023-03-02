@@ -19,6 +19,7 @@ export class ApplicationService {
   ) {}
 
   async create(application: CreateApplicationDto) {
+    // TODO return resume URL: http://localhost:3000/application/:id
     return await this.applicationRepo.save(application);
   }
 
