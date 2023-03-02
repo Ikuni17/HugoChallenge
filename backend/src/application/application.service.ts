@@ -13,7 +13,7 @@ export class ApplicationService {
   ) {}
 
   async create(application: CreateApplicationDto) {
-    return await this.applicationRepo.create(application);
+    return await this.applicationRepo.save(application);
   }
 
   async findAll() {
