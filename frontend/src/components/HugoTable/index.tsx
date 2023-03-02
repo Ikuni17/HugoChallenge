@@ -5,6 +5,7 @@ const defaultProps: Partial<TableProps> = {
   highlightOnHover: true,
   horizontalSpacing: 'xl',
   verticalSpacing: 'xs',
+  withBorder: true,
   withColumnBorders: true
 };
 

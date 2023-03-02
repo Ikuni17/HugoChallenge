@@ -1,8 +1,26 @@
-import React, {useEffect, useState} from 'react';
-import {HugoStack, HugoTable, HugoTitle} from '../../components';
+import React, {useEffect, useMemo, useState} from 'react';
+import {Link} from 'react-router-dom';
+import {HugoButton, HugoStack, HugoTable, HugoTitle} from '../../components';
+import {Routes} from '../../routes';
 
 export const ResumeTable: React.FC = () => {
   const [applications, setApplications] = useState<Application[]>();
+  const rows = useMemo(() => {
+    return applications?.map(({id, person}) => {
+      return (
+        <tr key={id}>
+          <td>{person.firstName}</td>
+          <td>{person.lastName}</td>
+          <td>{new Date(person.dateOfBirth).toLocaleDateString()}</td>
+          <td>
+            <HugoButton component={Link} to={`${Routes.Application}/${id}`}>
+              Edit
+            </HugoButton>
+          </td>
+        </tr>
+      );
+    });
+  }, [applications]);
 
   useEffect(() => {
     fetch('http://localhost:8000/api/application', {
@@ -20,11 +38,21 @@ export const ResumeTable: React.FC = () => {
 
   return (
     <>
-      <HugoTitle order={3} align="center">
+      <HugoTitle order={3} mb="md" align="center">
         {'Resume Application'}
       </HugoTitle>
       <HugoStack>
-        <HugoTable></HugoTable>
+        <HugoTable>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Date of Birth</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>{rows ?? []}</tbody>
+        </HugoTable>
       </HugoStack>
     </>
   );

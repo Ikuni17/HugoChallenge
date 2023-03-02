@@ -47,7 +47,7 @@ export const ThirdPartyForm: React.FC = () => {
 
   return (
     <>
-      <HugoTitle order={3} align="center">
+      <HugoTitle order={3} mb="md" align="center">
         {'Start New Application'}
       </HugoTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
