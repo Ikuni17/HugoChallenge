@@ -1,16 +1,12 @@
 import React from 'react';
 import {MantineProvider} from '@mantine/core';
 import {defaultTheme} from './styles/theme';
-import {HugoButton, HugoContainer, HugoLogo, HugoTextInput} from './components';
+import {Router} from './routes';
 
 export const App: React.FC = () => {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={defaultTheme}>
-      <HugoContainer>
-        <HugoLogo />
-        <HugoButton>Hello</HugoButton>
-        <HugoTextInput label="World" />
-      </HugoContainer>
+      <Router />
     </MantineProvider>
   );
 };
