@@ -3,7 +3,12 @@ import {CreateApplicationDto} from './dto/create-application.dto';
 import {UpdateApplicationDto} from './dto/update-application.dto';
 import {Application} from './application.entity';
 import {InjectRepository} from '@nestjs/typeorm';
-import {Repository} from 'typeorm';
+import {FindOptionsRelations, Repository} from 'typeorm';
+
+// Return nested objects with GET requests
+const relations: FindOptionsRelations<Application> = {
+  person: {address: true, vehicles: true}
+};
 
 @Injectable()
 export class ApplicationService {
@@ -17,11 +22,11 @@ export class ApplicationService {
   }
 
   async findAll() {
-    return await this.applicationRepo.find();
+    return await this.applicationRepo.find({relations});
   }
 
   async findOne(id: number) {
-    return await this.applicationRepo.findOneBy({id});
+    return await this.applicationRepo.findOne({where: {id}, relations});
   }
 
   async update(id: number, application: UpdateApplicationDto) {
