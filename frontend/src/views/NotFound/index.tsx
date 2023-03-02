@@ -5,7 +5,7 @@ import {Routes} from '../../routes';
 
 export const NotFound: React.FC = () => {
   return (
-    <HugoContainer pt="xl" sx={{textAlign: 'center'}}>
+    <HugoContainer sx={{textAlign: 'center'}}>
       {'Page Not Found'}
       <HugoButton ml="xl" component={Link} to={Routes.Home}>
         Return Home
