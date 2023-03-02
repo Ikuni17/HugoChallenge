@@ -67,6 +67,7 @@ export const ThirdPartyForm: React.FC = () => {
           <HugoCalendar
             value={dateOfBirthField.value}
             onChange={dateOfBirthField.onChange}
+            fullWidth
             // error={dateOfBirthError?.message}
             // withAsterisk
             // label={'Date of Birth'}
