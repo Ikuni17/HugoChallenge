@@ -11,7 +11,7 @@ import {VehicleModule} from './vehicle/vehicle.module';
       type: 'sqlite',
       database: 'hugoDB.sqlite3',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false,
+      synchronize: true,
       autoLoadEntities: true
     }),
     ApplicationModule,

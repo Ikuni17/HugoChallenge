@@ -24,14 +24,13 @@ export class Person {
   @Column('datetime')
   dateOfBirth;
 
-  @OneToMany(() => Vehicle, vehicle => vehicle.person)
+  @OneToMany(() => Vehicle, vehicle => vehicle.person, {cascade: true})
   vehicles: Vehicle[];
 
-  @OneToOne(() => Address, address => address.person)
+  @OneToOne(() => Address, address => address.person, {cascade: true})
   @JoinColumn()
   address: Address;
 
   @OneToOne(() => Application, application => application.person)
-  @JoinColumn()
   application: Application;
 }
