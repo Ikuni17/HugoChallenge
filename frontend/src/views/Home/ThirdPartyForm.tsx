@@ -9,7 +9,6 @@ import {
   HugoTitle
 } from '../../components';
 import {thirdPartyFormSchema} from '../../form';
-import {Input} from '@mantine/core';
 
 type ThirdPartyFormFields = Pick<
   Person,
@@ -65,17 +64,16 @@ export const ThirdPartyForm: React.FC = () => {
             withAsterisk
             label={'Last Name'}
           />
-          <Input.Wrapper
-            error={dateOfBirthError?.message}
-            withAsterisk
-            label={'Date of Birth'}
-          >
-            <HugoCalendar
-              value={dateOfBirthField.value}
-              onChange={dateOfBirthField.onChange}
-              fullWidth
-            />
-          </Input.Wrapper>
+          <HugoCalendar
+            value={dateOfBirthField.value}
+            onChange={dateOfBirthField.onChange}
+            fullWidth
+            wrapperProps={{
+              error: dateOfBirthError?.message,
+              withAsterisk: true,
+              label: 'Date of Birth'
+            }}
+          />
           <HugoButton type="submit" disabled={!formState.isDirty}>
             {'Submit'}
           </HugoButton>
