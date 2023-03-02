@@ -4,3 +4,4 @@ export * from './HugoContainer';
 export * from './HugoLogo';
 export * from './HugoStack';
 export * from './HugoTextInput';
+export * from './HugoTitle';
