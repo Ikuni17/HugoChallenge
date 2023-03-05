@@ -9,13 +9,10 @@ import {
   HugoTitle
 } from '../../components';
 import {thirdPartyFormSchema} from '../../form';
-
-type ThirdPartyFormFields = Pick<
-  Person,
-  'firstName' | 'lastName' | 'dateOfBirth'
->;
+import {useApplicationCreate} from '../../api';
 
 export const ThirdPartyForm: React.FC = () => {
+  const {mutate} = useApplicationCreate();
   const {control, formState, handleSubmit} = useForm<ThirdPartyFormFields>({
     resolver: yupResolver(thirdPartyFormSchema),
     defaultValues: {
@@ -26,8 +23,8 @@ export const ThirdPartyForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<ThirdPartyFormFields> = useCallback(
-    data => console.log(data),
-    []
+    person => mutate({person}),
+    [mutate]
   );
 
   const {
