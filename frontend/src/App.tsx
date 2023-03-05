@@ -17,9 +17,10 @@ export const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider withGlobalStyles withNormalizeCSS theme={defaultTheme}>
-        {/* Ideally would be in a Header component */}
-        <HugoLogo style={{margin: '8px'}} />
-        <Router />
+        <Router>
+          {/* Ideally would be in a Header component */}
+          <HugoLogo style={{margin: '8px'}} />
+        </Router>
       </MantineProvider>
     </QueryClientProvider>
   );

@@ -5,9 +5,10 @@ import {Home} from '../views/Home';
 import {Application} from '../views/Application';
 import {NotFound} from '../views/NotFound';
 
-export const Router: React.FC = () => {
+export const Router: React.FC<{children: React.ReactNode}> = ({children}) => {
   return (
     <BrowserRouter>
+      {children}
       <Switch>
         <Route exact path={Routes.Home} component={Home} />
         <Route exact path={Routes.Application} component={Application} />
