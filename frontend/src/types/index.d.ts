@@ -28,6 +28,7 @@ interface Vehicle {
   id: number;
   make: string;
   model: string;
+  vin: string;
   year: number;
 }
 

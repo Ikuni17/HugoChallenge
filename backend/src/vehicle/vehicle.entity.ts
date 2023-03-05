@@ -15,6 +15,9 @@ export class Vehicle {
   @Column()
   year: number;
 
+  @Column()
+  vin: string;
+
   @ManyToOne(() => Person, person => person.vehicles)
   person: Person;
 }
