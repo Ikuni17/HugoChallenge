@@ -5,7 +5,13 @@ import {defaultTheme} from './styles/theme';
 import {Router} from './routes';
 import {HugoLogo} from './components';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false
+    }
+  }
+});
 
 export const App: React.FC = () => {
   return (
