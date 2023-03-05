@@ -1,14 +1,12 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useMemo} from 'react';
 import {Link} from 'react-router-dom';
 import {HugoButton, HugoStack, HugoTable, HugoTitle} from '../../components';
 import {Routes} from '../../routes';
-import {listApplications} from '../../api';
-import {useQuery} from 'react-query';
+import {useApplicationList} from '../../api';
 
 export const ResumeTable: React.FC = () => {
-  const {data} = useQuery('applications', listApplications);
+  const {data} = useApplicationList();
   const rows = useMemo(() => {
-    // @ts-expect-error asdasd
     return data?.map(({id, person}) => {
       return (
         <tr key={id}>
@@ -24,21 +22,6 @@ export const ResumeTable: React.FC = () => {
       );
     });
   }, [data]);
-
-  // // TODO: Fetching twice
-  // useEffect(() => {
-  //   fetch('http://localhost:8000/api/application', {
-  //     mode: 'cors'
-  //   })
-  //     .then(r => {
-  //       if (r.ok) {
-  //         return r.json() as Promise<Application[]>;
-  //       }
-  //     })
-  //     .then(data => {
-  //       setApplications(data);
-  //     });
-  // }, []);
 
   return (
     <HugoStack pt="xl">
