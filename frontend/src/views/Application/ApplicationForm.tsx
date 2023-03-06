@@ -3,7 +3,6 @@ import {SubmitHandler, useForm, useController} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {
   HugoButton,
-  HugoCalendar,
   HugoStack,
   HugoTextInput,
   HugoTitle

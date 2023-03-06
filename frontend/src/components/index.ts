@@ -1,6 +1,5 @@
 export * from './HugoBox';
 export * from './HugoButton';
-export * from './HugoCalendar';
 export * from './HugoContainer';
 export * from './HugoDatePicker';
 export * from './HugoLogo';
