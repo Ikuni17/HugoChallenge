@@ -45,3 +45,7 @@ export const useApplicationCreate = () => {
     }
   });
 };
+
+// const updateApplication = async (application: ApplicationFormFields) => {
+//   return await axios.put<Application>(`${APP_API}/${application.id}`, application);
+// };
