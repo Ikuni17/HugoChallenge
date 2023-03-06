@@ -2,6 +2,7 @@ export * from './HugoBox';
 export * from './HugoButton';
 export * from './HugoContainer';
 export * from './HugoDatePicker';
+export * from './HugoGroup';
 export * from './HugoLogo';
 export * from './HugoStack';
 export * from './HugoTable';
