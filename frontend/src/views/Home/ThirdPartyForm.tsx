@@ -5,9 +5,12 @@ import {HugoButton, HugoStack, HugoTitle} from '../../components';
 import {personFormSchema} from '../../form';
 import {useApplicationCreate} from '../../api';
 import {PersonForm} from '../../form/PersonForm';
+import {useHistory} from 'react-router-dom';
+import {Routes} from '../../routes';
 
 export const ThirdPartyForm: React.FC = () => {
-  const {mutate} = useApplicationCreate();
+  const history = useHistory();
+  const {mutateAsync} = useApplicationCreate();
   const {control, formState, handleSubmit} = useForm<PersonFormFields>({
     resolver: yupResolver(personFormSchema),
     defaultValues: {
@@ -18,8 +21,14 @@ export const ThirdPartyForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<PersonFormFields> = useCallback(
-    person => mutate({person}),
-    [mutate]
+    person =>
+      mutateAsync({person}).then(({status, data}) => {
+        if (status === 201) {
+          // Redirect to resume route
+          history.push(`${Routes.Application}/${data.id}`);
+        }
+      }),
+    [mutateAsync, history]
   );
 
   return (

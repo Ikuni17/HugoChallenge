@@ -5,6 +5,7 @@ type ApplicationIdParam = number | string;
 interface Application {
   id: number;
   person: Person;
+  resume?: string;
 }
 
 interface Person {
