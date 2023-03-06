@@ -20,13 +20,60 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
   // const {mutate} = useApplicationCreate();
   const {id, person} = application;
   const {control, formState, handleSubmit} = useForm<PersonFormFields>({
-    resolver: yupResolver(applicationFormSchema),
+    // resolver: yupResolver(applicationFormSchema),
     defaultValues: {...person, dateOfBirth: new Date(person.dateOfBirth)}
   });
-  // const onSubmit: SubmitHandler<ThirdPartyFormFields> = useCallback(
-  //   person => mutate({person}),
-  //   [mutate]
-  // );
+  const onSubmit: SubmitHandler<PersonFormFields> = useCallback(
+    person => console.log(person),
+    []
+  );
 
-  return <PersonForm control={control} />;
+  const {
+    field: streetField,
+    fieldState: {error: streetError}
+  } = useController({name: 'address.street', control});
+
+  const {
+    field: cityField,
+    fieldState: {error: cityError}
+  } = useController({name: 'address.city', control});
+
+  const {
+    field: stateField,
+    fieldState: {error: stateError}
+  } = useController({name: 'address.state', control});
+
+  const {
+    field: zipcodeField,
+    fieldState: {error: zipcodeError}
+  } = useController({name: 'address.zipcode', control});
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <PersonForm control={control} />
+      <HugoStack pb="xl">
+        <HugoTextInput
+          {...streetField}
+          error={streetError?.message}
+          withAsterisk
+          label={'Street'}
+        />
+        <HugoTextInput
+          {...cityField}
+          error={cityError?.message}
+          withAsterisk
+          label={'City'}
+        />
+        <HugoTextInput
+          {...stateField}
+          error={stateError?.message}
+          withAsterisk
+          label={'State'}
+        />
+      </HugoStack>
+      <HugoButton type="submit" fullWidth disabled={!formState.isDirty}>
+        {'Submit'}
+      </HugoButton>
+    </form>
+  );
 };
