@@ -36,12 +36,8 @@ export class ApplicationController {
     return this.applicationService.remove(+id);
   }
 
-  // TODO
-  // @Post(':id')
-  // validate(
-  //   @Param('id') id: string,
-  //   @Body() updateApplicationDto: UpdateApplicationDto
-  // ) {
-  //   return this.applicationService.validate(+id, updateApplicationDto);
-  // }
+  @Post('/validate')
+  validate(@Body() updateApplicationDto: UpdateApplicationDto) {
+    return this.applicationService.validate(updateApplicationDto);
+  }
 }

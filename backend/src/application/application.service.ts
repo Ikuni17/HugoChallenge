@@ -41,8 +41,9 @@ export class ApplicationService {
     return await this.applicationRepo.delete(id);
   }
 
-  async validate(id: number, application: UpdateApplicationDto) {
-    // TODO
-    return await `This action validates ${id}`;
+  async validate(application: UpdateApplicationDto) {
+    // TODO validation func
+
+    return {price: Number((Math.random() * (100 - 10) + 10).toFixed(2))};
   }
 }
