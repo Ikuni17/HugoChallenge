@@ -72,7 +72,10 @@ export const VehicleForm: React.FC<SubFormProps> = ({control}) => {
       <HugoTitle order={3} color="indigo">
         {'Vehicles'}
       </HugoTitle>
-      <HugoButton onClick={append} disabled={vehicleFields.length > 2}>
+      <HugoButton
+        onClick={() => append({make: '', model: '', year: 1, vin: ''})}
+        disabled={vehicleFields.length > 2}
+      >
         {'Add Vehicle'}
       </HugoButton>
       {vehicleFields.map((vehicle, i) => {
@@ -81,7 +84,7 @@ export const VehicleForm: React.FC<SubFormProps> = ({control}) => {
             <VehicleFieldSet
               key={vehicle.id}
               control={control}
-              name={`vehicle${i}`}
+              name={`vehicles.${i}`}
             />
             <HugoButton
               key={`${vehicle.id}-remove`}
