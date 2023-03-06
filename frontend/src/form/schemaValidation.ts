@@ -17,7 +17,7 @@ const state = string().required('State is required');
 const zipcode = string()
   .required('Zipcode is required')
   .matches(/^[0-9]+$/, 'Must be only digits')
-  .test('len', 'Must be exactly 5 characters', val => val?.length === 5);
+  .test('len', 'Must be exactly 5 digits', val => val?.length === 5);
 const make = string().required('Make is required');
 const model = string().required('Model is required');
 const vin = string().required('VIN is required');
