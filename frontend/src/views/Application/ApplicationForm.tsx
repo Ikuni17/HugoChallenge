@@ -40,9 +40,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <HugoTitle order={3} color="indigo" align="center">
-        {'Insurance Application'}
-      </HugoTitle>
+      <HugoTitle>{'Insurance Application'}</HugoTitle>
       <PersonForm control={control} />
       <AddressForm control={control} />
       <VehicleForm control={control} />

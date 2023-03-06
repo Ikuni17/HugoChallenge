@@ -25,9 +25,7 @@ export const ResumeTable: React.FC = () => {
 
   return (
     <HugoStack pt="xl">
-      <HugoTitle order={3} align="center">
-        {'Resume Application'}
-      </HugoTitle>
+      <HugoTitle>{'Resume Application'}</HugoTitle>
       <HugoTable>
         <thead>
           <tr>

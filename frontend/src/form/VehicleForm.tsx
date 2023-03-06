@@ -73,9 +73,7 @@ export const VehicleForm: React.FC<SubFormProps> = ({control}) => {
 
   return (
     <HugoStack pb="md">
-      <HugoTitle order={3} color="indigo">
-        {'Vehicles'}
-      </HugoTitle>
+      <HugoTitle>{'Vehicles'}</HugoTitle>
       <HugoButton
         onClick={() =>
           append({make: '', model: '', year: MIN_VEHICLE_YEAR, vin: ''})

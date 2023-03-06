@@ -24,9 +24,7 @@ export const ThirdPartyForm: React.FC = () => {
 
   return (
     <HugoStack pb="xl">
-      <HugoTitle order={3} align="center">
-        {'Start New Application'}
-      </HugoTitle>
+      <HugoTitle>{'Start New Application'}</HugoTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <PersonForm control={control} />
         <HugoButton type="submit" fullWidth disabled={!formState.isDirty}>
