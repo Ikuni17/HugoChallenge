@@ -17,7 +17,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
   application
 }) => {
   const {id, person} = application;
-  const {mutateAsync} = useApplicationUpdate();
+  const {mutateAsync, isLoading: updateIsLoading} = useApplicationUpdate();
   const {control, formState, handleSubmit, reset} = useForm<PersonFormFields>({
     resolver: yupResolver(applicationFormSchema),
     defaultValues: {
@@ -44,7 +44,11 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
       <PersonForm control={control} />
       <AddressForm control={control} />
       <VehicleForm control={control} />
-      <HugoButton type="submit" fullWidth disabled={!formState.isDirty}>
+      <HugoButton
+        type="submit"
+        fullWidth
+        disabled={!formState.isDirty || updateIsLoading}
+      >
         {'Update Insurance Application'}
       </HugoButton>
     </form>
