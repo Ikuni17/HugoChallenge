@@ -73,15 +73,17 @@ export const VehicleForm: React.FC<SubFormProps> = ({control}) => {
 
   return (
     <HugoStack pb="md">
-      <HugoTitle>{'Vehicles'}</HugoTitle>
-      <HugoButton
-        onClick={() =>
-          append({make: '', model: '', year: MIN_VEHICLE_YEAR, vin: ''})
-        }
-        disabled={vehicleFields.length > 2}
-      >
-        {'Add Vehicle'}
-      </HugoButton>
+      <HugoGroup>
+        <HugoTitle order={4}>{'Vehicles'}</HugoTitle>
+        <HugoButton
+          onClick={() =>
+            append({make: '', model: '', year: MIN_VEHICLE_YEAR, vin: ''})
+          }
+          disabled={vehicleFields.length > 2}
+        >
+          {'Add New Vehicle'}
+        </HugoButton>
+      </HugoGroup>
       {vehicleFields.map((vehicle, i) => {
         return (
           <HugoGroup key={`${vehicle.id}-group`} align={'flex-end'} grow>
