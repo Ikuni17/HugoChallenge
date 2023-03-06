@@ -1,4 +1,4 @@
-import {Controller, Get, Post, Body, Param, Delete, Put} from '@nestjs/common';
+import {Controller, Get, Post, Body, Param, Put} from '@nestjs/common';
 import {ApplicationService} from './application.service';
 import {CreateApplicationDto} from './dto/create-application.dto';
 import {UpdateApplicationDto} from './dto/update-application.dto';
@@ -18,22 +18,17 @@ export class ApplicationController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.applicationService.findOne(+id);
   }
 
   // TODO: validate ID
   @Put(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateApplicationDto: UpdateApplicationDto
   ) {
     return this.applicationService.update(updateApplicationDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.applicationService.remove(+id);
   }
 
   @Post('/validate')

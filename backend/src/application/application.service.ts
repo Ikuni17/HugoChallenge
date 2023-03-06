@@ -39,10 +39,6 @@ export class ApplicationService {
     return await this.applicationRepo.save(application);
   }
 
-  async remove(id: number) {
-    return await this.applicationRepo.delete(id);
-  }
-
   async validate(application: UpdateApplicationDto) {
     // TODO validation func
 
