@@ -1,6 +1,6 @@
 import React from 'react';
 import {useController, Control} from 'react-hook-form';
-import {HugoCalendar, HugoStack, HugoTextInput} from '../components';
+import {HugoDatePicker, HugoStack, HugoTextInput} from '../components';
 
 interface PersonFormProps {
   control: Control<PersonFormFields>;
@@ -36,15 +36,12 @@ export const PersonForm: React.FC<PersonFormProps> = ({control}) => {
         withAsterisk
         label={'Last Name'}
       />
-      <HugoCalendar
+      <HugoDatePicker
         value={dateOfBirthField.value}
         onChange={dateOfBirthField.onChange}
-        fullWidth
-        wrapperProps={{
-          error: dateOfBirthError?.message,
-          withAsterisk: true,
-          label: 'Date of Birth'
-        }}
+        error={dateOfBirthError?.message}
+        withAsterisk
+        label="Date of Birth"
       />
     </HugoStack>
   );

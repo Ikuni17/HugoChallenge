@@ -11,7 +11,7 @@ interface Person {
   id: number;
   firstName: string;
   lastName: string;
-  dateOfBirth: Date;
+  dateOfBirth: string;
   address?: Address;
   vehicles?: Vehicle[];
 }
@@ -32,13 +32,12 @@ interface Vehicle {
   year: number;
 }
 
-type PersonFormFields = Pick<Person, 'firstName' | 'lastName' | 'dateOfBirth'>;
-
-interface FullPersonFormFields extends Omit<Person, 'id'> {
+interface PersonFormFields extends Omit<Person, 'id' | 'dateOfBirth'> {
+  dateOfBirth: Date;
   address?: Omit<Address, 'id'>;
   vehicles?: Omit<Vehicle, 'id'>[];
 }
 
 interface ApplicationFormFields extends Omit<Application, 'id'> {
-  person: FullPersonFormFields;
+  person: PersonFormFields;
 }

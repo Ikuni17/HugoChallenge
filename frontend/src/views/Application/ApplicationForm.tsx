@@ -9,6 +9,7 @@ import {
   HugoTitle
 } from '../../components';
 import {applicationFormSchema} from '../../form';
+import {PersonForm} from '../../form/PersonForm';
 
 interface ApplicationFormProps {
   application: Application;
@@ -19,37 +20,14 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
 }) => {
   // const {mutate} = useApplicationCreate();
   const {id, person} = application;
-  const {address, vehicles} = person;
-  const {control, formState, handleSubmit} = useForm<ApplicationFormFields>({
-    resolver: yupResolver(applicationFormSchema)
-    // defaultValues: {
-    // firstName: person.firstName,
-    // lastName: person.lastName,
-    // dateOfBirth: person.dateOfBirth,
-    // person,
-    // address,
-    // vehicles
-    // }
+  const {control, formState, handleSubmit} = useForm<PersonFormFields>({
+    resolver: yupResolver(applicationFormSchema),
+    defaultValues: {...person, dateOfBirth: new Date(person.dateOfBirth)}
   });
   // const onSubmit: SubmitHandler<ThirdPartyFormFields> = useCallback(
   //   person => mutate({person}),
   //   [mutate]
   // );
 
-  // const {
-  //   field: firstNameField,
-  //   fieldState: {error: firstNameError}
-  // } = useController({name: 'firstName', control});
-
-  // const {
-  //   field: lastNameField,
-  //   fieldState: {error: lastNameError}
-  // } = useController({name: 'lastName', control});
-
-  // const {
-  //   field: dateOfBirthField,
-  //   fieldState: {error: dateOfBirthError}
-  // } = useController({name: 'dateOfBirth', control});
-
-  return null;
+  return <PersonForm control={control} />;
 };
