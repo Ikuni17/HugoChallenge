@@ -45,7 +45,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
       <AddressForm control={control} />
       <VehicleForm control={control} />
       <HugoButton type="submit" fullWidth disabled={!formState.isDirty}>
-        {'Submit'}
+        {'Update Insurance Application'}
       </HugoButton>
     </form>
   );
