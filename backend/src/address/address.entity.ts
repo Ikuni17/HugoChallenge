@@ -15,8 +15,9 @@ export class Address {
   @Column()
   state: string;
 
+  // Zipcode is string to prevent leading 0 from being swallowed
   @Column()
-  zipcode: number;
+  zipcode: string;
 
   @OneToOne(() => Person, person => person.address)
   person: Person;
