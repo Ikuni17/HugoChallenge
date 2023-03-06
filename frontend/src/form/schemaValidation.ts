@@ -20,7 +20,10 @@ const zipcode = string()
 const make = string().required('Make is required');
 const model = string().required('Model is required');
 const vin = string().required('VIN is required');
-const year = number().required('Year is required');
+const year = number()
+  .required('Year is required')
+  .min(1985)
+  .max(dayjs().year() + 1);
 
 export const personFormSchema = object({
   firstName,
