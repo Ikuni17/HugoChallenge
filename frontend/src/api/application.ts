@@ -5,17 +5,17 @@ const API_BASE = 'http://localhost:8000/api/';
 const APP_API = `${API_BASE}application`;
 const QUERY_KEY = 'applications';
 
-const getApplications = async () => {
+const listApplications = async () => {
   const {data} = await axios.get<Application[]>(APP_API);
 
   return data;
 };
 
 export const useApplicationList = () => {
-  return useQuery(QUERY_KEY, getApplications);
+  return useQuery(QUERY_KEY, listApplications);
 };
 
-const getApplicationById = async (applicationId: ApplicationIdParam) => {
+const readApplication = async (applicationId: ApplicationIdParam) => {
   const {data} = await axios.get<Application>(`${APP_API}/${applicationId}`);
 
   return data;
@@ -23,7 +23,7 @@ const getApplicationById = async (applicationId: ApplicationIdParam) => {
 
 export const useApplicationRead = (applicationId: ApplicationIdParam) => {
   return useQuery([QUERY_KEY, applicationId], () =>
-    getApplicationById(applicationId)
+    readApplication(applicationId)
   );
 };
 
@@ -65,4 +65,12 @@ export const useApplicationUpdate = () => {
       );
     }
   });
+};
+
+const validateApplication = async (application: ApplicationFormFields) => {
+  return await axios.post<Application>(`${APP_API}/validate`, application);
+};
+
+export const useApplicationValidate = () => {
+  return useMutation(validateApplication);
 };
