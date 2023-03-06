@@ -5,8 +5,8 @@ import {HugoContainer} from '../../components';
 import {ApplicationForm} from './ApplicationForm';
 
 export const Application: React.FC = () => {
-  const {id: applicationId} = useParams<{id: string}>();
-  const {data: application} = useApplicationRead(applicationId);
+  const {id} = useParams<{id: string}>();
+  const {data: application} = useApplicationRead(id);
 
   return (
     <HugoContainer>

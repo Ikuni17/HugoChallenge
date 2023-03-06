@@ -41,7 +41,7 @@ export const PersonForm: React.FC<PersonFormProps> = ({control}) => {
         onChange={dateOfBirthField.onChange}
         error={dateOfBirthError?.message}
         withAsterisk
-        label="Date of Birth"
+        label={'Date of Birth'}
       />
     </HugoStack>
   );
