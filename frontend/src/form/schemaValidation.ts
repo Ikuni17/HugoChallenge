@@ -19,7 +19,7 @@ const model = string().required('Model is required');
 const vin = string().required('VIN is required');
 const year = number().required('Year is required');
 
-export const thirdPartyFormSchema = object({
+export const personFormSchema = object({
   firstName,
   lastName,
   dateOfBirth

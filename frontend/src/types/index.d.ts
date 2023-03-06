@@ -32,16 +32,13 @@ interface Vehicle {
   year: number;
 }
 
-type ThirdPartyFormFields = Pick<
-  Person,
-  'firstName' | 'lastName' | 'dateOfBirth'
->;
+type PersonFormFields = Pick<Person, 'firstName' | 'lastName' | 'dateOfBirth'>;
 
-interface PersonFormFields extends Omit<Person, 'id'> {
+interface FullPersonFormFields extends Omit<Person, 'id'> {
   address?: Omit<Address, 'id'>;
   vehicles?: Omit<Vehicle, 'id'>[];
 }
 
 interface ApplicationFormFields extends Omit<Application, 'id'> {
-  person: PersonFormFields;
+  person: FullPersonFormFields;
 }
