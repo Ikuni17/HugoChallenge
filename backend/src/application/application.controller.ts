@@ -1,4 +1,12 @@
-import {Controller, Get, Post, Body, Param, Put} from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Put,
+  ParseIntPipe
+} from '@nestjs/common';
 import {ApplicationService} from './application.service';
 import {CreateApplicationDto} from './dto/create-application.dto';
 import {UpdateApplicationDto} from './dto/update-application.dto';
@@ -18,14 +26,14 @@ export class ApplicationController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id', ParseIntPipe) id: number) {
     return this.applicationService.findOne(+id);
   }
 
   // TODO: validate ID
   @Put(':id')
   update(
-    @Param('id') id: number,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateApplicationDto: UpdateApplicationDto
   ) {
     return this.applicationService.update(updateApplicationDto);
