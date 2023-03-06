@@ -34,6 +34,7 @@ export class ApplicationService {
   }
 
   async update(application: UpdateApplicationDto) {
+    // Using save instead of update automatically handles relation upsert
     return await this.applicationRepo.save(application);
   }
 

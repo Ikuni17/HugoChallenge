@@ -67,8 +67,8 @@ export const useApplicationUpdate = () => {
   });
 };
 
-const validateApplication = async (application: ApplicationFormFields) => {
-  return await axios.post<Application>(`${APP_API}/validate`, application);
+const validateApplication = async (application: Application) => {
+  return await axios.post<{price: number}>(`${APP_API}/validate`, application);
 };
 
 export const useApplicationValidate = () => {
