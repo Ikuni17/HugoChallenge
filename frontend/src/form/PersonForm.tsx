@@ -23,7 +23,7 @@ export const PersonForm: React.FC<PersonFormProps> = ({control}) => {
   } = useController({name: 'dateOfBirth', control});
 
   return (
-    <HugoStack>
+    <HugoStack pb="xl">
       <HugoTextInput
         {...firstNameField}
         error={firstNameError?.message}
