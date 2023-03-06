@@ -62,7 +62,7 @@ class VehicleDto {
   year: number;
 }
 
-class PersonDto {
+class PartialPersonDto {
   @IsString()
   @IsNotEmpty()
   firstName: string;
@@ -75,7 +75,9 @@ class PersonDto {
   @IsNotEmpty()
   @IsMinimumAge()
   dateOfBirth: Date;
+}
 
+class PersonDto extends PartialPersonDto {
   @ValidateNested()
   @Type(() => AddressDto)
   address: AddressDto;
@@ -89,6 +91,6 @@ class PersonDto {
 
 export class CreateApplicationDto {
   @ValidateNested()
-  @Type(() => PersonDto)
-  person: PersonDto;
+  @Type(() => PartialPersonDto)
+  person: PartialPersonDto;
 }

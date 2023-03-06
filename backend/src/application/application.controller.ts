@@ -30,12 +30,8 @@ export class ApplicationController {
     return this.applicationService.findOne(+id);
   }
 
-  // TODO: validate ID
-  @Put(':id')
-  update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() updateApplicationDto: UpdateApplicationDto
-  ) {
+  @Put()
+  update(@Body() updateApplicationDto: UpdateApplicationDto) {
     return this.applicationService.update(updateApplicationDto);
   }
 
