@@ -21,7 +21,7 @@ interface Address {
   street: string;
   city: string;
   state: string;
-  zipcode: number;
+  zipcode: string;
 }
 
 interface Vehicle {
@@ -40,4 +40,8 @@ interface PersonFormFields extends Omit<Person, 'id' | 'dateOfBirth'> {
 
 interface ApplicationFormFields extends Omit<Application, 'id'> {
   person: PersonFormFields;
+}
+
+interface SubFormProps {
+  control: Control<PersonFormFields>;
 }

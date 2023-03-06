@@ -1,12 +1,8 @@
 import React from 'react';
-import {useController, Control} from 'react-hook-form';
+import {useController} from 'react-hook-form';
 import {HugoDatePicker, HugoStack, HugoTextInput} from '../components';
 
-interface PersonFormProps {
-  control: Control<PersonFormFields>;
-}
-
-export const PersonForm: React.FC<PersonFormProps> = ({control}) => {
+export const PersonForm: React.FC<SubFormProps> = ({control}) => {
   const {
     field: firstNameField,
     fieldState: {error: firstNameError}
@@ -23,7 +19,7 @@ export const PersonForm: React.FC<PersonFormProps> = ({control}) => {
   } = useController({name: 'dateOfBirth', control});
 
   return (
-    <HugoStack pb="xl">
+    <HugoStack pb="md">
       <HugoTextInput
         {...firstNameField}
         error={firstNameError?.message}

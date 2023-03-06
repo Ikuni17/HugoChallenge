@@ -1,12 +1,8 @@
 import React from 'react';
-import {useController, Control} from 'react-hook-form';
+import {useController} from 'react-hook-form';
 import {HugoStack, HugoTextInput} from '../components';
 
-interface AddressFormProps {
-  control: Control<PersonFormFields>;
-}
-
-export const AddressForm: React.FC<AddressFormProps> = ({control}) => {
+export const AddressForm: React.FC<SubFormProps> = ({control}) => {
   const {
     field: streetField,
     fieldState: {error: streetError}
@@ -28,7 +24,7 @@ export const AddressForm: React.FC<AddressFormProps> = ({control}) => {
   } = useController({name: 'address.zipcode', control});
 
   return (
-    <HugoStack pb="xl">
+    <HugoStack pb="md">
       <HugoTextInput
         {...streetField}
         error={streetError?.message}
