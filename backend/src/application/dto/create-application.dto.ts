@@ -77,7 +77,7 @@ class PartialPersonDto {
   dateOfBirth: Date;
 }
 
-class PersonDto extends PartialPersonDto {
+export class PersonDto extends PartialPersonDto {
   @ValidateNested()
   @Type(() => AddressDto)
   address: AddressDto;

@@ -30,8 +30,11 @@ export class ApplicationController {
     return this.applicationService.findOne(+id);
   }
 
-  @Put()
-  update(@Body() updateApplicationDto: UpdateApplicationDto) {
+  @Put(':id')
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateApplicationDto: UpdateApplicationDto
+  ) {
     return this.applicationService.update(updateApplicationDto);
   }
 
