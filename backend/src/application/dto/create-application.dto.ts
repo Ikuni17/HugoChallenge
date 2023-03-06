@@ -1,5 +1,47 @@
-import {Person} from 'src/person/person.entity';
+import {Type} from 'class-transformer';
+import {
+  IsDateString,
+  IsNotEmpty,
+  IsString,
+  ValidateNested
+} from 'class-validator';
+import {IsMinimumAge} from './validator';
+
+class PersonDto {
+  @IsString()
+  @IsNotEmpty()
+  firstName: string;
+
+  @IsString()
+  @IsNotEmpty()
+  lastName: string;
+
+  @IsDateString()
+  @IsNotEmpty()
+  @IsMinimumAge()
+  dateOfBirth: Date;
+}
+
+class AddressDto {
+  @IsString()
+  @IsNotEmpty()
+  street: string;
+
+  @IsString()
+  @IsNotEmpty()
+  city: string;
+
+  @IsString()
+  @IsNotEmpty()
+  state: string;
+
+  @IsString()
+  @IsNotEmpty()
+  zipcode: string;
+}
 
 export class CreateApplicationDto {
-  person: Person;
+  @ValidateNested()
+  @Type(() => PersonDto)
+  person: PersonDto;
 }

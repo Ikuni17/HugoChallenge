@@ -10,7 +10,6 @@ const relations: FindOptionsRelations<Application> = {
   person: {address: true, vehicles: true}
 };
 
-// TODO proper HTTP status codes/error handling
 @Injectable()
 export class ApplicationService {
   constructor(
@@ -28,12 +27,10 @@ export class ApplicationService {
   }
 
   async findAll() {
-    // TODO return null instead of empty [] for vehicles
     return await this.applicationRepo.find({relations});
   }
 
   async findOne(id: number) {
-    // TODO return null instead of empty [] for vehicles
     return await this.applicationRepo.findOne({where: {id}, relations});
   }
 
