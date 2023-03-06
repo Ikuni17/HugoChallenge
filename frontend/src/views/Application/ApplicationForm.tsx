@@ -66,12 +66,12 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
           {'Update Insurance Application'}
         </HugoButton>
       </form>
-      {priceData && (
+      {priceData?.data && (
         <HugoStack pt="xl" spacing={0}>
           <HugoTitle order={4} align="start">
             Price
           </HugoTitle>
-          {`$${priceData?.data.price}`}
+          {`$${priceData.data.price.toFixed(2)}`}
         </HugoStack>
       )}
     </>
