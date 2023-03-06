@@ -17,8 +17,8 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
   application
 }) => {
   const {id, person} = application;
-  const {mutate} = useApplicationUpdate();
-  const {control, formState, handleSubmit} = useForm<PersonFormFields>({
+  const {mutateAsync} = useApplicationUpdate();
+  const {control, formState, handleSubmit, reset} = useForm<PersonFormFields>({
     resolver: yupResolver(applicationFormSchema),
     defaultValues: {
       ...person,
@@ -30,8 +30,12 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
     }
   });
   const onSubmit: SubmitHandler<PersonFormFields> = useCallback(
-    person => mutate({id, person}),
-    [id, mutate]
+    async person => {
+      await mutateAsync({id, person}).then(({data}) =>
+        reset({...data.person, dateOfBirth: new Date(person.dateOfBirth)})
+      );
+    },
+    [id, mutateAsync, reset]
   );
 
   return (

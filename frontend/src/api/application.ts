@@ -47,9 +47,10 @@ export const useApplicationCreate = () => {
 };
 
 const updateApplication = async (application: ApplicationFormFields) => {
-  return await axios.put<Application>(`${APP_API}/${application.id}`, {
-    person: application.person
-  });
+  return await axios.put<Application>(
+    `${APP_API}/${application.id}`,
+    application
+  );
 };
 
 export const useApplicationUpdate = () => {
@@ -59,7 +60,7 @@ export const useApplicationUpdate = () => {
     mutationFn: updateApplication,
     onSuccess: updatedApplication => {
       queryClient.setQueryData(
-        ['applications', {id: updatedApplication.data.id}],
+        [QUERY_KEY, `${updatedApplication.data.id}`],
         updatedApplication.data
       );
     }

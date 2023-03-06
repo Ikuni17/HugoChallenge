@@ -32,10 +32,8 @@ interface Vehicle {
   year: number;
 }
 
-interface PersonFormFields extends Omit<Person, 'id' | 'dateOfBirth'> {
+interface PersonFormFields extends Omit<Required<Person>, 'dateOfBirth'> {
   dateOfBirth: Date;
-  address?: Omit<Address, 'id'>;
-  vehicles?: Omit<Vehicle, 'id'>[];
 }
 
 interface ApplicationFormFields extends Omit<Application, 'id'> {
