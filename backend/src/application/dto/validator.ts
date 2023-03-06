@@ -1,3 +1,4 @@
+const dayjs = require('dayjs');
 import {
   registerDecorator,
   ValidationOptions,
@@ -13,11 +14,7 @@ export function IsMinimumAge(validationOptions?: ValidationOptions) {
       options: validationOptions,
       validator: {
         validate(value: string, args: ValidationArguments) {
-          const sixteenYearsAgo = new Date();
-          sixteenYearsAgo.setFullYear(sixteenYearsAgo.getFullYear() - 16);
-          const parsedValue = new Date(value);
-
-          return parsedValue <= sixteenYearsAgo;
+          return dayjs().diff(value, 'year') >= 16;
         },
         defaultMessage(args: ValidationArguments) {
           return `${args.property} must be at least 16 years old`;

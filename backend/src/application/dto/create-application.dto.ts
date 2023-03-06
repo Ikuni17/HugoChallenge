@@ -1,13 +1,19 @@
 import {Type} from 'class-transformer';
 import {
+  ArrayMaxSize,
+  ArrayMinSize,
   IsDateString,
   IsNotEmpty,
+  IsNumber,
   IsString,
   Length,
   Matches,
+  Max,
+  Min,
   ValidateNested,
   ValidationArguments
 } from 'class-validator';
+import {MAX_VEHICLE_YEAR, MIN_VEHICLE_YEAR} from 'src/constants';
 import {IsMinimumAge} from './validator';
 
 class AddressDto {
@@ -36,6 +42,26 @@ class AddressDto {
   zipcode: string;
 }
 
+class VehicleDto {
+  @IsString()
+  @IsNotEmpty()
+  make: string;
+
+  @IsString()
+  @IsNotEmpty()
+  model: string;
+
+  @IsString()
+  @IsNotEmpty()
+  vin: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  @Min(MIN_VEHICLE_YEAR)
+  @Max(MAX_VEHICLE_YEAR)
+  year: number;
+}
+
 class PersonDto {
   @IsString()
   @IsNotEmpty()
@@ -53,6 +79,12 @@ class PersonDto {
   @ValidateNested()
   @Type(() => AddressDto)
   address: AddressDto;
+
+  @ArrayMinSize(1)
+  @ArrayMaxSize(3)
+  @ValidateNested({each: true})
+  @Type(() => VehicleDto)
+  vehicles: VehicleDto[];
 }
 
 export class CreateApplicationDto {
