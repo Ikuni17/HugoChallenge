@@ -3,10 +3,12 @@ import {useController, useFieldArray} from 'react-hook-form';
 import {
   HugoButton,
   HugoGroup,
+  HugoNumberInput,
   HugoStack,
   HugoTextInput,
   HugoTitle
 } from '../components';
+import {MIN_VEHICLE_YEAR, MAX_VEHICLE_YEAR} from '../constants';
 
 interface VehicleFieldSetProps extends SubFormProps {
   name: string;
@@ -44,11 +46,13 @@ const VehicleFieldSet: React.FC<VehicleFieldSetProps> = ({name, control}) => {
         withAsterisk
         label={'Model'}
       />
-      <HugoTextInput
+      <HugoNumberInput
         {...yearField}
         error={yearError?.message}
         withAsterisk
         label={'Year'}
+        min={MIN_VEHICLE_YEAR}
+        max={MAX_VEHICLE_YEAR}
       />
       <HugoTextInput
         {...vinField}
@@ -73,7 +77,9 @@ export const VehicleForm: React.FC<SubFormProps> = ({control}) => {
         {'Vehicles'}
       </HugoTitle>
       <HugoButton
-        onClick={() => append({make: '', model: '', year: 1, vin: ''})}
+        onClick={() =>
+          append({make: '', model: '', year: MIN_VEHICLE_YEAR, vin: ''})
+        }
         disabled={vehicleFields.length > 2}
       >
         {'Add Vehicle'}

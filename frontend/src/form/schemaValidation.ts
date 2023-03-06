@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import {object, string, date, number, array} from 'yup';
+import {MIN_VEHICLE_YEAR, MAX_VEHICLE_YEAR} from '../constants';
 
 const isMinimumAge = (date: Date) => {
   return dayjs().diff(date, 'year') >= 16;
@@ -22,8 +23,8 @@ const model = string().required('Model is required');
 const vin = string().required('VIN is required');
 const year = number()
   .required('Year is required')
-  .min(1985)
-  .max(dayjs().year() + 1);
+  .min(MIN_VEHICLE_YEAR)
+  .max(MAX_VEHICLE_YEAR);
 
 export const personFormSchema = object({
   firstName,
@@ -45,10 +46,12 @@ export const vehicleSchema = object({
   year
 });
 
+export const vehicleArraySchema = array(vehicleSchema).min(1).max(3);
+
 export const applicationFormSchema = object({
   firstName,
   lastName,
   dateOfBirth,
   address: addressSchema,
-  vehicles: array(vehicleSchema).min(1).max(3)
+  vehicles: vehicleArraySchema
 });

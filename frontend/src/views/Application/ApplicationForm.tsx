@@ -6,6 +6,7 @@ import {applicationFormSchema} from '../../form';
 import {PersonForm} from '../../form/PersonForm';
 import {AddressForm} from '../../form/AddressForm';
 import {VehicleForm} from '../../form/VehicleForm';
+import {MIN_VEHICLE_YEAR} from '../../constants';
 
 interface ApplicationFormProps {
   application: Application;
@@ -24,7 +25,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
       address: person.address ?? {street: '', city: '', state: '', zipcode: ''},
       vehicles: !!person.vehicles?.length
         ? person.vehicles
-        : [{make: '', model: '', year: 1, vin: ''}]
+        : [{make: '', model: '', year: MIN_VEHICLE_YEAR, vin: ''}]
     }
   });
   const onSubmit: SubmitHandler<PersonFormFields> = useCallback(
