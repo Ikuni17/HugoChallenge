@@ -40,7 +40,6 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
     async person => {
       await updateAsync({id, person})
         .then(({data}) => {
-          // TODO: check response status, handle error
           validateAsync(data);
 
           return data;
