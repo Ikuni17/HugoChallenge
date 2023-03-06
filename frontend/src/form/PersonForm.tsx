@@ -38,6 +38,7 @@ export const PersonForm: React.FC<SubFormProps> = ({control}) => {
         error={dateOfBirthError?.message}
         withAsterisk
         label={'Date of Birth'}
+        clearable={false}
       />
     </HugoStack>
   );
