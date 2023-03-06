@@ -1,5 +1,3 @@
-// TODO optional / null
-
 type ApplicationIdParam = number | string;
 
 interface Application {
