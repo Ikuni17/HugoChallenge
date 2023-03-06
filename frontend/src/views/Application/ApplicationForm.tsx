@@ -1,12 +1,7 @@
 import React, {useCallback} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {
-  HugoButton,
-  HugoStack,
-  HugoTextInput,
-  HugoTitle
-} from '../../components';
+import {HugoButton, HugoTitle} from '../../components';
 import {applicationFormSchema} from '../../form';
 import {PersonForm} from '../../form/PersonForm';
 import {AddressForm} from '../../form/AddressForm';
@@ -27,9 +22,9 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
       ...person,
       dateOfBirth: new Date(person.dateOfBirth),
       address: person.address ?? {street: '', city: '', state: '', zipcode: ''},
-      vehicles: person.vehicles?.length
+      vehicles: !!person.vehicles?.length
         ? person.vehicles
-        : [{make: '', model: '', year: undefined, vin: ''}]
+        : [{make: '', model: '', year: 1, vin: ''}]
     }
   });
   const onSubmit: SubmitHandler<PersonFormFields> = useCallback(
@@ -39,7 +34,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <HugoTitle order={3} color="indigo">
+      <HugoTitle order={3} color="indigo" align="center">
         {'Insurance Application'}
       </HugoTitle>
       <PersonForm control={control} />
