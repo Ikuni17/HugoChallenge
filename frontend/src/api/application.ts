@@ -46,6 +46,22 @@ export const useApplicationCreate = () => {
   });
 };
 
-// const updateApplication = async (application: ApplicationFormFields) => {
-//   return await axios.put<Application>(`${APP_API}/${application.id}`, application);
-// };
+const updateApplication = async (application: ApplicationFormFields) => {
+  return await axios.put<Application>(`${APP_API}/${application.id}`, {
+    person: application.person
+  });
+};
+
+export const useApplicationUpdate = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: updateApplication,
+    onSuccess: updatedApplication => {
+      queryClient.setQueryData(
+        ['applications', {id: updatedApplication.data.id}],
+        updatedApplication.data
+      );
+    }
+  });
+};

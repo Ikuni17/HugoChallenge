@@ -39,6 +39,7 @@ interface PersonFormFields extends Omit<Person, 'id' | 'dateOfBirth'> {
 }
 
 interface ApplicationFormFields extends Omit<Application, 'id'> {
+  id?: number;
   person: PersonFormFields;
 }
 

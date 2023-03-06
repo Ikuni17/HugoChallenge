@@ -7,6 +7,7 @@ import {PersonForm} from '../../form/PersonForm';
 import {AddressForm} from '../../form/AddressForm';
 import {VehicleForm} from '../../form/VehicleForm';
 import {MIN_VEHICLE_YEAR} from '../../constants';
+import {useApplicationUpdate} from '../../api';
 
 interface ApplicationFormProps {
   application: Application;
@@ -15,8 +16,8 @@ interface ApplicationFormProps {
 export const ApplicationForm: React.FC<ApplicationFormProps> = ({
   application
 }) => {
-  // const {mutate} = useApplicationCreate();
   const {id, person} = application;
+  const {mutate} = useApplicationUpdate();
   const {control, formState, handleSubmit} = useForm<PersonFormFields>({
     resolver: yupResolver(applicationFormSchema),
     defaultValues: {
@@ -29,8 +30,8 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
     }
   });
   const onSubmit: SubmitHandler<PersonFormFields> = useCallback(
-    person => console.log(person),
-    []
+    person => mutate({id, person}),
+    [id, mutate]
   );
 
   return (

@@ -33,8 +33,8 @@ export class ApplicationService {
     return await this.applicationRepo.findOne({where: {id}, relations});
   }
 
-  async update(id: number, application: UpdateApplicationDto) {
-    return await this.applicationRepo.update(id, application);
+  async update(application: UpdateApplicationDto) {
+    return await this.applicationRepo.save(application);
   }
 
   async remove(id: number) {

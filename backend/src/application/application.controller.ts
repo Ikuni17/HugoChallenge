@@ -22,12 +22,13 @@ export class ApplicationController {
     return this.applicationService.findOne(+id);
   }
 
+  // TODO: validate ID
   @Put(':id')
   update(
     @Param('id') id: string,
     @Body() updateApplicationDto: UpdateApplicationDto
   ) {
-    return this.applicationService.update(+id, updateApplicationDto);
+    return this.applicationService.update(updateApplicationDto);
   }
 
   @Delete(':id')
