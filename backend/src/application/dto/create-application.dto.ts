@@ -16,7 +16,7 @@ import {
 import {MAX_VEHICLE_YEAR, MIN_VEHICLE_YEAR} from 'src/constants';
 import {IsMinimumAge} from './validator';
 
-class AddressDto {
+export class AddressDto {
   @IsString()
   @IsNotEmpty()
   street: string;
@@ -42,7 +42,7 @@ class AddressDto {
   zipcode: string;
 }
 
-class VehicleDto {
+export class VehicleDto {
   @IsString()
   @IsNotEmpty()
   make: string;
