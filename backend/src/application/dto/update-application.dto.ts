@@ -9,14 +9,17 @@ import {
 } from 'class-validator';
 import {AddressDto, PersonDto, VehicleDto} from './create-application.dto';
 
+/*
+  The @Allow decorator is used to prevent whitelist from filtering ID, while
+  also allowing creation of address and vehicles through the PUT endpoint.
+  Since they are new entities they do not have IDs.
+*/
 class UpdateAddressDto extends AddressDto {
-  @IsNumber()
-  @IsNotEmpty()
+  @Allow()
   id: number;
 }
 
 class UpdateVehicleDto extends VehicleDto {
-  // Prevent whitelist from filtering ID while allowing create without ID
   @Allow()
   id: number;
 }
